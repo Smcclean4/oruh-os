@@ -20,11 +20,11 @@ const jetbrains = JetBrains_Mono({
 });
 
 const navItems = [
-  { label: "Dashboard", href: "/app", active: true },
-  { label: "Overlay Builder", href: "/app/overlay-builder", active: false },
-  { label: "Widgets", href: "/app/widgets", active: false },
-  { label: "Integrations", href: "/app/integrations", active: false },
-  { label: "Settings", href: "/app/settings", active: false },
+  { label: "Dashboard", href: "/home/dashboard", active: true },
+  { label: "Overlay Builder", href: "/home/overlaybuilder", active: false },
+  { label: "Widgets", href: "/home/widgets", active: false },
+  { label: "Integrations", href: "/home/integrations", active: false },
+  { label: "Settings", href: "/home/settings", active: false },
 ];
 
 const integrations = [
@@ -150,7 +150,7 @@ export default function DashboardPage() {
             </p>
           </div>
           <a
-            href="/app/overlay-builder"
+            href="/home/overlaybuilder"
             className="rounded-md bg-magenta px-4 py-2 text-sm font-semibold text-bg transition-transform hover:scale-[1.03]"
           >
             Open Overlay Builder →
@@ -208,7 +208,7 @@ export default function DashboardPage() {
               <h2 className="font-display text-lg font-semibold">Quick actions</h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <a
-                  href="/app/overlay-builder"
+                  href="/home/overlaybuilder"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-magenta/40"
                 >
                   <p className="font-display text-sm font-semibold">Overlay Builder</p>
@@ -217,7 +217,7 @@ export default function DashboardPage() {
                   </p>
                 </a>
                 <a
-                  href="/app/widgets"
+                  href="/home/widgets"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-cyan/40"
                 >
                   <p className="font-display text-sm font-semibold">Widgets</p>
@@ -226,7 +226,7 @@ export default function DashboardPage() {
                   </p>
                 </a>
                 <a
-                  href="/app/integrations"
+                  href="/home/integrations"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-amber/40"
                 >
                   <p className="font-display text-sm font-semibold">Integrations</p>
@@ -235,7 +235,7 @@ export default function DashboardPage() {
                   </p>
                 </a>
                 <a
-                  href="/app/settings"
+                  href="/home/settings"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-line"
                 >
                   <p className="font-display text-sm font-semibold">Settings</p>

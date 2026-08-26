@@ -194,7 +194,7 @@ export default function Home() {
             </a>
           </nav>
           <a
-            href="/app"
+            href="/home/dashboard"
             className="rounded-md bg-magenta px-4 py-2 text-sm font-semibold text-bg transition-transform hover:scale-[1.03]"
           >
             Enter
