@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 
 const chakra = Chakra_Petch({

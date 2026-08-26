@@ -21,7 +21,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CreatorOS — The control room for streamers",
+  title: "OruhOS - The control room for streamers",
   description:
     "Overlays, widgets, a real website, AI clips, community games, your Discord, your sponsors — all wired into one platform built for streamers.",
 };

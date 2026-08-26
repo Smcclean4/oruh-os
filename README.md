@@ -1,4 +1,4 @@
-# CreatorOS Landing Page
+# OruhOS Landing Page
 
 Next.js 14 (App Router) + TypeScript + Tailwind CSS.
 
