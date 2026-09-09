@@ -51,7 +51,7 @@ const segments = [
   {
     label: "SEGMENT 2",
     title: "Design your overlay",
-    body: "Place widgets on the canvas the way you'd arrange furniture — drag, resize, done.",
+    body: "Place widgets on the canvas the way you'd arrange furniture. Drag, resize, done.",
   },
   {
     label: "SEGMENT 3",

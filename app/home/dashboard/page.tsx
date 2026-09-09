@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
+import Sidebar from "../components/nav";
 
 const chakra = Chakra_Petch({
   subsets: ["latin"],
@@ -18,14 +19,6 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jetbrains",
 });
-
-const navItems = [
-  { label: "Dashboard", href: "/home/dashboard", active: true },
-  { label: "Overlay Builder", href: "/home/overlaybuilder", active: false },
-  { label: "Widgets", href: "/home/widgets", active: false },
-  { label: "Integrations", href: "/home/integrations", active: false },
-  { label: "Settings", href: "/home/settings", active: false },
-];
 
 const integrations = [
   { name: "Twitch", connected: true },
@@ -103,43 +96,9 @@ export default function DashboardPage() {
     <div
       className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
     >
-      {/* Sidebar */}
-      <aside className="hidden w-60 shrink-0 border-r border-line bg-bg-alt md:flex md:flex-col">
-        <div className="border-b border-line px-6 py-5">
-          <span className="font-display text-2xl font-bold tracking-tight">
-            Oruh<span className="text-magenta">Studio</span>
-          </span>
-        </div>
-        <nav className="flex flex-1 flex-col gap-1 px-3 py-4">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${item.active
-                ? "bg-surface text-text"
-                : "text-text-dim hover:bg-surface hover:text-text"
-                }`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <div className="border-t border-line px-6 py-4">
-          <div className="flex items-center gap-2">
-            <span
-              className={`h-2 w-2 rounded-full ${isLive ? "animate-blink bg-magenta motion-reduce:animate-none" : "bg-text-dim"
-                }`}
-            />
-            <span className="font-mono text-[11px] uppercase tracking-widest text-text-dim">
-              {isLive ? "Live" : "Offline"}
-            </span>
-          </div>
-        </div>
-      </aside>
+      <Sidebar isLive={isLive} />
 
-      {/* Main */}
       <div className="flex-1">
-        {/* Top bar */}
         <header className="flex items-center justify-between border-b border-line px-6 py-5 md:px-10">
           <div>
             <h1 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
@@ -149,6 +108,7 @@ export default function DashboardPage() {
               {isLive ? `streaming · ${formatUptime(uptime)}` : "not currently streaming"}
             </p>
           </div>
+
           <a
             href="/home/overlaybuilder"
             className="rounded-md bg-magenta px-4 py-2 text-sm font-semibold text-bg transition-transform hover:scale-[1.03]"
@@ -158,7 +118,6 @@ export default function DashboardPage() {
         </header>
 
         <main className="px-6 py-8 md:px-10">
-          {/* Stat cards */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl border border-line bg-surface p-5">
               <p className="font-mono text-[11px] uppercase tracking-widest text-text-dim">
@@ -203,7 +162,6 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {/* Quick actions */}
             <div className="rounded-xl border border-line bg-surface p-6 lg:col-span-2">
               <h2 className="font-display text-lg font-semibold">Quick actions</h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -216,6 +174,7 @@ export default function DashboardPage() {
                     Arrange panels, alerts, and cameras on your canvas.
                   </p>
                 </a>
+
                 <a
                   href="/home/widgets"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-cyan/40"
@@ -225,6 +184,7 @@ export default function DashboardPage() {
                     Manage viewer counts, alerts, timers, and chat boxes.
                   </p>
                 </a>
+
                 <a
                   href="/home/integrations"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-amber/40"
@@ -234,6 +194,7 @@ export default function DashboardPage() {
                     Connect Twitch, YouTube, and OBS.
                   </p>
                 </a>
+
                 <a
                   href="/home/settings"
                   className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-line"
@@ -245,14 +206,11 @@ export default function DashboardPage() {
                 </a>
               </div>
 
-              {/* Integration status strip */}
               <div className="mt-6 flex flex-wrap gap-2 border-t border-line pt-4">
                 {integrations.map((i) => (
                   <span
                     key={i.name}
-                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] ${i.connected
-                      ? "border-cyan/40 text-cyan"
-                      : "border-line text-text-dim"
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] ${i.connected ? "border-cyan/40 text-cyan" : "border-line text-text-dim"
                       }`}
                   >
                     <span
@@ -265,7 +223,6 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Event feed */}
             <div className="rounded-xl border border-line bg-surface p-6">
               <h2 className="font-display text-lg font-semibold">Recent activity</h2>
               <div className="mt-4 flex flex-col gap-2">

@@ -20,6 +20,7 @@ import {
   ChevronDown,
   Copy,
 } from "lucide-react";
+import Sidebar from "../components/nav";
 
 const chakra = Chakra_Petch({
   subsets: ["latin"],
@@ -36,14 +37,6 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jetbrains",
 });
-
-const navItems = [
-  { label: "Dashboard", href: "/home/dashboard", active: false },
-  { label: "Overlay Builder", href: "/home/overlaybuilder", active: true },
-  { label: "Widgets", href: "/home/widgets", active: false },
-  { label: "Integrations", href: "/home/integrations", active: false },
-  { label: "Settings", href: "/home/settings", active: false },
-];
 
 // ---------- Overlay builder types & data ----------
 
@@ -281,36 +274,7 @@ export default function OverlayBuilderPage() {
     <div
       className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
     >
-      {/* Sidebar */}
-      <aside className="hidden w-60 shrink-0 border-r border-line bg-bg-alt md:flex md:flex-col">
-        <div className="border-b border-line px-6 py-5">
-          <span className="font-display text-2xl font-bold tracking-tight">
-            Oruh<span className="text-magenta">Studio</span>
-          </span>
-        </div>
-        <nav className="flex flex-1 flex-col gap-1 px-3 py-4">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${item.active ? "bg-surface text-text" : "text-text-dim hover:bg-surface hover:text-text"
-                }`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <div className="border-t border-line px-6 py-4">
-          <div className="flex items-center gap-2">
-            <span
-              className={`h-2 w-2 rounded-full ${isLive ? "animate-blink bg-magenta motion-reduce:animate-none" : "bg-text-dim"}`}
-            />
-            <span className="font-mono text-[11px] uppercase tracking-widest text-text-dim">
-              {isLive ? "Live" : "Offline"}
-            </span>
-          </div>
-        </div>
-      </aside>
+      <Sidebar isLive={isLive} />
 
       {/* Main */}
       <div className="flex flex-1 flex-col">
