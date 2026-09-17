@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
+import Link from "next/dist/client/link";
 
 const chakra = Chakra_Petch({
   subsets: ["latin"],
@@ -186,19 +187,19 @@ export default function Home() {
             Oruh<span className="text-magenta">Studio</span>
           </span>
           <nav className="hidden items-center gap-8 text-sm text-text-dim md:flex">
-            <a href="#features" className="hover:text-text transition-colors">
+            <Link href="#features" className="hover:text-text transition-colors">
               Features
-            </a>
-            <a href="#how-it-works" className="hover:text-text transition-colors">
+            </Link>
+            <Link href="#how-it-works" className="hover:text-text transition-colors">
               How it works
-            </a>
+            </Link>
           </nav>
-          <a
+          <Link
             href="/home/dashboard"
             className="rounded-md bg-magenta px-4 py-2 text-sm font-semibold text-bg transition-transform hover:scale-[1.03]"
           >
             Enter
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -218,18 +219,18 @@ export default function Home() {
             built one.
           </p>
           <div className="mt-8 flex items-center gap-6">
-            <a
-              href="/app"
+            <Link
+              href="/home/dashboard"
               className="rounded-md bg-magenta px-6 py-3 text-sm font-semibold text-bg transition-transform hover:scale-[1.03]"
             >
               Enter the studio →
-            </a>
-            <a
+            </Link>
+            <Link
               href="#features"
               className="text-sm font-medium text-text-dim underline decoration-line underline-offset-4 hover:text-text"
             >
               See what's inside
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -368,12 +369,12 @@ export default function Home() {
           <p className="mt-3 text-text-dim">
             No credit card. No control room required.
           </p>
-          <a
-            href="/app"
+          <Link
+            href="/home/dashboard"
             className="mt-8 inline-block rounded-md bg-magenta px-8 py-3.5 text-sm font-semibold text-bg transition-transform hover:scale-[1.03]"
           >
             Enter the studio →
-          </a>
+          </Link>
         </div>
       </section>
 
