@@ -1,31 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import {
   LayoutTemplate,
   Blocks,
   Plus,
   ChevronRight,
 } from "lucide-react";
-import { WIDGET_TYPES, colorClasses } from "@/lib/widget-types";
-import Sidebar from "../components/nav";
-
-const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-chakra",
-});
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains",
-});
+import { WIDGET_TYPES, colorClasses } from "@/lib/widgets/types";
 
 // Mock until overlays are queryable from Prisma — same pattern as the
 // dashboard's recent-activity feed.
@@ -47,7 +29,6 @@ const CATEGORY_FILTER = [
 ] as const;
 
 export default function WidgetsPage() {
-  const [isLive] = useState(true);
   const [activeColor, setActiveColor] = useState<(typeof CATEGORY_FILTER)[number]["id"]>("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -59,13 +40,8 @@ export default function WidgetsPage() {
   const selected = WIDGET_TYPES.find((w) => w.id === selectedId) || null;
 
   return (
-    <div
-      className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
-    >
-      <Sidebar isLive={isLive} />
-
-      <div className="flex flex-1 flex-col">
-        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
+    <>
+      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
           <div className="flex items-center gap-3">
             <Blocks size={20} className="text-magenta" />
             <h1 className="font-display text-xl font-bold tracking-tight sm:text-2xl">Widgets</h1>
@@ -183,7 +159,6 @@ export default function WidgetsPage() {
             </div>
           </aside>
         </main>
-      </div>
-    </div>
+    </>
   );
 }

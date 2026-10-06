@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import type { IconType } from "react-icons";
 import { SiTwitch, SiYoutube, SiDiscord, SiKick } from "react-icons/si";
 import {
@@ -12,23 +11,6 @@ import {
   RefreshCw,
   AlertCircle,
 } from "lucide-react";
-import Sidebar from "../components/nav";
-
-const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-chakra",
-});
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains",
-});
 
 // ---------- Integration types & data ----------
 
@@ -133,7 +115,6 @@ function statusMeta(status: ConnectionStatus) {
 }
 
 export default function IntegrationsPage() {
-  const [isLive] = useState(true);
   const [selectedId, setSelectedId] = useState<string | null>(INTEGRATIONS[0]?.id ?? null);
 
   const selected = INTEGRATIONS.find((i) => i.id === selectedId) || null;
@@ -141,15 +122,8 @@ export default function IntegrationsPage() {
   const connectedCount = INTEGRATIONS.filter((i) => i.status === "connected").length;
 
   return (
-    <div
-      className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
-    >
-      <Sidebar isLive={isLive} />
-
-      {/* Main */}
-      <div className="flex flex-1 flex-col">
-        {/* Top bar */}
-        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
+    <>
+      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
           <div className="flex items-center gap-3">
             <Plug size={20} className="text-magenta" />
             <h1 className="font-display text-xl font-bold tracking-tight sm:text-2xl">Integrations</h1>
@@ -287,7 +261,6 @@ export default function IntegrationsPage() {
             </div>
           </div>
         </main>
-      </div>
-    </div>
+    </>
   );
 }

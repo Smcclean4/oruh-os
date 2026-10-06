@@ -1,17 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutTemplate,
-  AlertTriangle,
-  MessageSquare,
-  Target,
-  UserPlus,
-  DollarSign,
-  Video,
-  Type as TypeIcon,
   Save,
   Eye,
   EyeOff,
@@ -20,35 +12,7 @@ import {
   ChevronDown,
   Copy,
 } from "lucide-react";
-import Sidebar from "../components/nav";
-
-const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-chakra",
-});
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains",
-});
-
-// ---------- Overlay builder types & data ----------
-
-interface WidgetTypeDef {
-  id: string;
-  label: string;
-  icon: LucideIcon;
-  colorClass: string; // tailwind text/border color token, e.g. "magenta"
-  w: number;
-  h: number;
-  desc: string;
-}
+import { WIDGET_TYPES, colorClasses } from "@/lib/widgets/types";
 
 interface PlacedWidget {
   id: string;
@@ -77,16 +41,6 @@ interface ResizeState {
   startH: number;
 }
 
-const WIDGET_TYPES: WidgetTypeDef[] = [
-  { id: "alert", label: "Alert Box", icon: AlertTriangle, colorClass: "magenta", w: 220, h: 70, desc: "New follower / sub pop-up" },
-  { id: "chat", label: "Chat Feed", icon: MessageSquare, colorClass: "cyan", w: 200, h: 240, desc: "Live chat overlay" },
-  { id: "goal", label: "Follower Goal", icon: Target, colorClass: "amber", w: 260, h: 60, desc: "Progress bar toward a goal" },
-  { id: "recent", label: "Recent Follower", icon: UserPlus, colorClass: "magenta", w: 220, h: 56, desc: "Latest follower ticker" },
-  { id: "donation", label: "Donation Ticker", icon: DollarSign, colorClass: "amber", w: 240, h: 56, desc: "Scrolling donation feed" },
-  { id: "webcam", label: "Webcam Frame", icon: Video, colorClass: "cyan", w: 220, h: 165, desc: "Border frame for cam" },
-  { id: "text", label: "Text / Ticker", icon: TypeIcon, colorClass: "cyan", w: 260, h: 44, desc: "Custom scrolling text" },
-];
-
 const CANVAS_W = 960;
 const CANVAS_H = 540;
 
@@ -97,21 +51,7 @@ function clamp(val: number, min: number, max: number): number {
   return Math.min(Math.max(val, min), max);
 }
 
-// Maps a token name to the concrete utility classes, since Tailwind needs
-// full class strings to be statically discoverable (no dynamic `text-${x}`).
-function colorClasses(colorClass: string) {
-  switch (colorClass) {
-    case "magenta":
-      return { text: "text-magenta", border: "border-magenta/50", bg: "bg-magenta/10", solidBg: "bg-magenta" };
-    case "amber":
-      return { text: "text-amber", border: "border-amber/50", bg: "bg-amber/10", solidBg: "bg-amber" };
-    default:
-      return { text: "text-cyan", border: "border-cyan/50", bg: "bg-cyan/10", solidBg: "bg-cyan" };
-  }
-}
-
 export default function OverlayBuilderPage() {
-  const [isLive] = useState(true);
   const [overlayName, setOverlayName] = useState("Untitled Overlay");
   const [widgets, setWidgets] = useState<PlacedWidget[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -271,14 +211,7 @@ export default function OverlayBuilderPage() {
   };
 
   return (
-    <div
-      className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
-    >
-      <Sidebar isLive={isLive} />
-
-      {/* Main */}
-      <div className="flex flex-1 flex-col">
-        {/* Top bar */}
+    <>
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
           <div className="flex items-center gap-3">
             <LayoutTemplate size={20} className="text-magenta" />
@@ -491,8 +424,7 @@ export default function OverlayBuilderPage() {
             </div>
           )}
         </main>
-      </div>
-    </div>
+    </>
   );
 }
 

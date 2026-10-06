@@ -1,24 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
-import Sidebar from "../components/nav";
-
-const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-chakra",
-});
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains",
-});
+import { eventColorClass, formatUptime } from "@/lib/studio/utils";
 
 const integrations = [
   { name: "Twitch", connected: true },
@@ -33,20 +16,6 @@ const eventFeed = [
   { color: "text", text: "raid incoming · remi.codes (38 viewers)", time: "22m" },
   { color: "cyan", text: "new follower · ashv_live", time: "31m" },
 ];
-
-function formatUptime(totalSeconds: number) {
-  const h = Math.floor(totalSeconds / 3600);
-  const m = Math.floor((totalSeconds % 3600) / 60);
-  const s = totalSeconds % 60;
-  return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
-}
-
-function eventColorClass(color: string) {
-  if (color === "cyan") return "border-cyan/40 text-cyan";
-  if (color === "magenta") return "border-magenta/40 text-magenta";
-  if (color === "amber") return "border-amber/40 text-amber";
-  return "border-line text-text";
-}
 
 export default function DashboardPage() {
   // Placeholder data — swap for real session / stream state once
@@ -93,13 +62,8 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div
-      className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
-    >
-      <Sidebar isLive={isLive} />
-
-      <div className="flex-1">
-        <header className="flex items-center justify-between border-b border-line px-6 py-5 md:px-10">
+    <>
+      <header className="flex items-center justify-between border-b border-line px-6 py-5 md:px-10">
           <div>
             <h1 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
               Welcome back
@@ -241,7 +205,6 @@ export default function DashboardPage() {
             </div>
           </div>
         </main>
-      </div>
-    </div>
+    </>
   );
 }

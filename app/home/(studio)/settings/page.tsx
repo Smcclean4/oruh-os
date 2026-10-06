@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Chakra_Petch, Inter, JetBrains_Mono } from "next/font/google";
 import {
   Settings as SettingsIcon,
   User,
@@ -11,43 +10,10 @@ import {
   Save,
   Camera,
 } from "lucide-react";
-import Sidebar from "../components/nav";
-
-const chakra = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-chakra",
-});
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains",
-});
+import Toggle from "@/components/studio/Toggle";
 
 const RESOLUTIONS = ["1920x1080", "1280x720", "2560x1440"];
 const TIMEZONES = ["Pacific Time (PT)", "Mountain Time (MT)", "Central Time (CT)", "Eastern Time (ET)", "UTC"];
-
-function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
-  return (
-    <button
-      role="switch"
-      aria-checked={checked}
-      onClick={() => onChange(!checked)}
-      className={`relative h-5 w-9 shrink-0 rounded-full transition-colors duration-200 ${checked ? "bg-cyan" : "bg-line"
-        }`}
-    >
-      <span
-        className="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-bg transition-transform duration-200 ease-out"
-        style={{ transform: checked ? "translateX(16px)" : "translateX(0px)" }}
-      />
-    </button>
-  );
-}
 
 function SettingsCard({
   title,
@@ -104,7 +70,6 @@ const inputClass =
   "w-full rounded-md border border-line bg-bg-alt px-3 py-2 text-sm text-text outline-none focus:border-cyan/50";
 
 export default function SettingsPage() {
-  const [isLive] = useState(true);
   const [saveState, setSaveState] = useState<"idle" | "saved">("idle");
 
   // Account
@@ -127,15 +92,8 @@ export default function SettingsPage() {
   };
 
   return (
-    <div
-      className={`${chakra.variable} ${inter.variable} ${jetbrains.variable} flex min-h-screen bg-bg font-body text-text antialiased`}
-    >
-      <Sidebar isLive={isLive} />
-
-      {/* Main */}
-      <div className="flex flex-1 flex-col">
-        {/* Top bar */}
-        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
+    <>
+      <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5 md:px-10">
           <div className="flex items-center gap-3">
             <SettingsIcon size={20} className="text-magenta" />
             <h1 className="font-display text-xl font-bold tracking-tight sm:text-2xl">Settings</h1>
@@ -272,7 +230,6 @@ export default function SettingsPage() {
             </SettingsCard>
           </div>
         </main>
-      </div>
-    </div>
+    </>
   );
 }
