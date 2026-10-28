@@ -33,11 +33,16 @@ const features = [
   },
   {
     ch: "CH.03",
+    title: "Sponsorships",
+    body: "Log the brand, the deliverables, and the payout. Deadlines and unpaid invoices stay on the same screen as the stream.",
+  },
+  {
+    ch: "CH.04",
     title: "Dashboard",
     body: "Every stream, every stat, one screen. Know what's working without tabbing through four different sites.",
   },
   {
-    ch: "CH.04",
+    ch: "CH.05",
     title: "Integrations",
     body: "Twitch, YouTube, and OBS connect in one click. Oruh sits underneath your existing setup, not on top of it.",
   },
@@ -190,6 +195,9 @@ export default function Home() {
             <Link href="#features" className="hover:text-text transition-colors">
               Features
             </Link>
+            <Link href="/home/sponsorships" className="hover:text-text transition-colors">
+              Sponsorships
+            </Link>
             <Link href="#how-it-works" className="hover:text-text transition-colors">
               How it works
             </Link>
@@ -214,9 +222,8 @@ export default function Home() {
             Build the stream you see in your head.
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-text-dim">
-            Design overlays, wire up widgets, and walk into every stream with
-            a setup that looks like you hired a broadcast team, because you
-            built one.
+            Design overlays, wire up widgets, and keep every sponsor
+            deliverable and payout in the same control room you go live from.
           </p>
           <div className="mt-8 flex items-center gap-6">
             <Link
@@ -318,8 +325,8 @@ export default function Home() {
             Everything your stream needs, wired together.
           </h2>
           <p className="mt-3 max-w-lg text-text-dim">
-            Four channels, one control room. Nothing here is a separate app
-            pretending to be part of the same product.
+            One control room. Nothing here is a separate app pretending to be
+            part of the same product.
           </p>
 
           <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">

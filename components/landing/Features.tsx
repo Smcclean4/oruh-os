@@ -34,6 +34,11 @@ const modules = [
     title: "Creator dashboard",
     copy: "One home base for your stats, deliverables, deadlines, and every sponsorship payout. No spreadsheet required.",
   },
+  {
+    tag: "SPONSORS",
+    title: "Deal ledger",
+    copy: "Campaigns, deliverables, and payout status in the same room as your stream. See what's late and what you're still owed.",
+  },
 ];
 
 export default function Features() {
@@ -53,7 +58,7 @@ export default function Features() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line border border-line rounded-[14px] overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-line border border-line rounded-[14px] overflow-hidden">
         {modules.map((m) => (
           <div
             key={m.tag}

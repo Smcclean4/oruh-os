@@ -1,6 +1,6 @@
 const tiers = [
   { name: "Creator", tag: "CORE MODULES", featured: false },
-  { name: "Pro", tag: "+ AI CLIPS, CREATOR DASHBOARD", pro: true },
+  { name: "Pro", tag: "CREATOR DASHBOARD", pro: true },
   { name: "Partner", tag: "+ WHITE-LABEL, PRIORITY SUPPORT", featured: true },
 ];
 

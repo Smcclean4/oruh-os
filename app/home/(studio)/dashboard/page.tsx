@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SponsorshipSnapshot from "@/components/studio/SponsorshipSnapshot";
 import { eventColorClass, formatUptime } from "@/lib/studio/utils";
 
 const integrations = [
@@ -125,6 +126,8 @@ export default function DashboardPage() {
             </div>
           </div>
 
+          <SponsorshipSnapshot />
+
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             <div className="rounded-xl border border-line bg-surface p-6 lg:col-span-2">
               <h2 className="font-display text-lg font-semibold">Quick actions</h2>
@@ -146,6 +149,16 @@ export default function DashboardPage() {
                   <p className="font-display text-sm font-semibold">Widgets</p>
                   <p className="mt-1 text-xs leading-relaxed text-text-dim">
                     Manage viewer counts, alerts, timers, and chat boxes.
+                  </p>
+                </a>
+
+                <a
+                  href="/home/sponsorships"
+                  className="rounded-lg border border-line bg-bg-alt p-4 transition-colors hover:border-amber/40"
+                >
+                  <p className="font-display text-sm font-semibold">Sponsorships</p>
+                  <p className="mt-1 text-xs leading-relaxed text-text-dim">
+                    Track deliverables, deadlines, and payout status.
                   </p>
                 </a>
 

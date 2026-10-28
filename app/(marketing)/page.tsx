@@ -2,6 +2,7 @@ import Nav from "@/components/landing/Nav";
 import Hero from "@/components/landing/Hero";
 import StatsBar from "@/components/landing/StatsBar";
 import Features from "@/components/landing/Features";
+import Sponsorships from "@/components/landing/Sponsorships";
 import Pricing from "@/components/landing/Pricing";
 import FinalCta from "@/components/landing/FinalCta";
 import Footer from "@/components/landing/Footer";
@@ -14,6 +15,7 @@ export default function Home() {
         <Hero />
         <StatsBar />
         <Features />
+        <Sponsorships />
         <Pricing />
         <FinalCta />
       </div>

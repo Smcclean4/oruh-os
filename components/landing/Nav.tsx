@@ -10,6 +10,9 @@ export default function Nav() {
           <a href="#features" className="hover:text-text transition-colors">
             Features
           </a>
+          <a href="#sponsors" className="hover:text-text transition-colors">
+            Sponsors
+          </a>
           <a href="#pricing" className="hover:text-text transition-colors">
             Pricing
           </a>
